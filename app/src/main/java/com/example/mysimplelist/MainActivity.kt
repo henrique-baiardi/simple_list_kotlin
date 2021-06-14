@@ -3,6 +3,7 @@ package com.example.mysimplelist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -30,6 +31,14 @@ class MainActivity : AppCompatActivity() {
             }else{
                 txt_produto.error = "Campo invalido"
             }
+        }
+
+        list_view_produtos.setOnItemLongClickListener {
+                adapterView: AdapterView<*>, view: View, position: Int, id: Long ->
+            val item = produtosAdapter.getItem(position)
+            produtosAdapter.remove(item)
+            true
+            //add depois confirmação
         }
 
     }
